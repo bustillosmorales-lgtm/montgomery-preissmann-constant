@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "The constant in the Montgomery-Preissmann conjecture: code and data"
+message: "If you use this software, please cite the article it accompanies."
+type: software
+authors:
+  - family-names: Bustillos
+    given-names: Francisco
+    affiliation: "Universidad Catolica del Maule, Talca, Chile"
+    email: fbustillos@ucm.cl
+license: MIT
+repository-code: "https://github.com/bustillosmorales-lgtm/montgomery-preissmann-constant"
+date-released: 2026-09-17

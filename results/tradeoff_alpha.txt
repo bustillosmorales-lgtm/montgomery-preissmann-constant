@@ -1,0 +1,106 @@
+closed form check alpha=0.5: |diff| = 1.89e-32
+closed form check alpha=2.0: |diff| = 6.82e-33
+
+alpha=0.5 n=120:  s = ell^(1/alpha),  log(1/mu),  ratio log(1/mu)/(pi^2 s),  local slope d log(1/mu)/ds
+   s=   0.9444  log(1/mu)=    4.746  ratio= 0.509  slope=    nan
+   s=   1.5209  log(1/mu)=    8.662  ratio= 0.577  slope=  6.791
+   s=   1.9966  log(1/mu)=   12.312  ratio= 0.625  slope=  7.675
+   s=   2.4445  log(1/mu)=   15.903  ratio= 0.659  slope=  8.017
+   s=   2.8771  log(1/mu)=   19.457  ratio= 0.685  slope=  8.216
+   s=   3.2988  log(1/mu)=   22.989  ratio= 0.706  slope=  8.375
+   s=   3.7167  log(1/mu)=   26.523  ratio= 0.723  slope=  8.458
+   s=   4.1256  log(1/mu)=   30.027  ratio= 0.737  slope=  8.568
+   s=   4.5342  log(1/mu)=   33.535  ratio= 0.749  slope=  8.585
+   s=   4.9399  log(1/mu)=   37.057  ratio= 0.760  slope=  8.682
+   s=   5.3379  log(1/mu)=   40.518  ratio= 0.769  slope=  8.696
+   s=   5.7414  log(1/mu)=   44.020  ratio= 0.777  slope=  8.678
+   s=   6.1444  log(1/mu)=   47.546  ratio= 0.784  slope=  8.752
+   s=   6.5394  log(1/mu)=   51.017  ratio= 0.790  slope=  8.788
+   s=   6.9331  log(1/mu)=   54.459  ratio= 0.796  slope=  8.741
+   s=   7.3322  log(1/mu)=   57.930  ratio= 0.801  slope=  8.697
+   s=   7.7355  log(1/mu)=   61.439  ratio= 0.805  slope=  8.702
+   s=   8.1383  log(1/mu)=   64.957  ratio= 0.809  slope=  8.732
+   s=   8.5385  log(1/mu)=   68.457  ratio= 0.812  slope=  8.746
+   s=   8.9368  log(1/mu)=   71.934  ratio= 0.816  slope=  8.729
+   s=   9.3349  log(1/mu)=   75.396  ratio= 0.818  slope=  8.695
+   s=   9.7342  log(1/mu)=   78.850  ratio= 0.821  slope=  8.654
+   s=  10.1354  log(1/mu)=   82.306  ratio= 0.823  slope=  8.612
+   s=  10.5392  log(1/mu)=   85.767  ratio= 0.825  slope=  8.571
+
+alpha=0.5 n=180:  s = ell^(1/alpha),  log(1/mu),  ratio log(1/mu)/(pi^2 s),  local slope d log(1/mu)/ds
+   s=   0.9447  log(1/mu)=    4.746  ratio= 0.509  slope=    nan
+   s=   1.5215  log(1/mu)=    8.662  ratio= 0.577  slope=  6.790
+   s=   1.9972  log(1/mu)=   12.313  ratio= 0.625  slope=  7.674
+   s=   2.4444  log(1/mu)=   15.899  ratio= 0.659  slope=  8.020
+   s=   2.8765  log(1/mu)=   19.457  ratio= 0.685  slope=  8.233
+   s=   3.2992  log(1/mu)=   22.999  ratio= 0.706  slope=  8.379
+   s=   3.7137  log(1/mu)=   26.517  ratio= 0.723  slope=  8.489
+   s=   4.1231  log(1/mu)=   30.035  ratio= 0.738  slope=  8.590
+   s=   4.5295  log(1/mu)=   33.546  ratio= 0.750  slope=  8.641
+   s=   4.9302  log(1/mu)=   37.042  ratio= 0.761  slope=  8.723
+   s=   5.3312  log(1/mu)=   40.546  ratio= 0.771  slope=  8.740
+   s=   5.7273  log(1/mu)=   44.039  ratio= 0.779  slope=  8.818
+   s=   6.1224  log(1/mu)=   47.518  ratio= 0.786  slope=  8.806
+   s=   6.5187  log(1/mu)=   51.032  ratio= 0.793  slope=  8.867
+   s=   6.9076  log(1/mu)=   54.490  ratio= 0.799  slope=  8.890
+   s=   7.3011  log(1/mu)=   57.976  ratio= 0.805  slope=  8.858
+   s=   7.6947  log(1/mu)=   61.488  ratio= 0.810  slope=  8.925
+   s=   8.0809  log(1/mu)=   64.943  ratio= 0.814  slope=  8.946
+   s=   8.4692  log(1/mu)=   68.396  ratio= 0.818  slope=  8.892
+   s=   8.8633  log(1/mu)=   71.901  ratio= 0.822  slope=  8.896
+   s=   9.2547  log(1/mu)=   75.408  ratio= 0.826  slope=  8.959
+   s=   9.6400  log(1/mu)=   78.864  ratio= 0.829  slope=  8.968
+   s=  10.0250  log(1/mu)=   82.297  ratio= 0.832  slope=  8.918
+   s=  10.4148  log(1/mu)=   85.755  ratio= 0.834  slope=  8.872
+
+alpha=2.0 n=120:  s = ell^(1/alpha),  log(1/mu),  ratio log(1/mu)/(pi^2 s),  local slope d log(1/mu)/ds
+   s=   0.9280  log(1/mu)=    3.444  ratio= 0.376  slope=    nan
+   s=   1.4190  log(1/mu)=    6.693  ratio= 0.478  slope=  6.618
+   s=   1.8511  log(1/mu)=    9.953  ratio= 0.545  slope=  7.546
+   s=   2.2652  log(1/mu)=   13.240  ratio= 0.592  slope=  7.936
+   s=   2.6705  log(1/mu)=   16.551  ratio= 0.628  slope=  8.168
+   s=   3.0714  log(1/mu)=   19.888  ratio= 0.656  slope=  8.325
+   s=   3.4668  log(1/mu)=   23.224  ratio= 0.679  slope=  8.436
+   s=   3.8609  log(1/mu)=   26.590  ratio= 0.698  slope=  8.542
+   s=   4.2509  log(1/mu)=   29.939  ratio= 0.714  slope=  8.587
+   s=   4.6430  log(1/mu)=   33.334  ratio= 0.727  slope=  8.661
+   s=   5.0279  log(1/mu)=   36.686  ratio= 0.739  slope=  8.708
+   s=   5.4175  log(1/mu)=   40.073  ratio= 0.749  slope=  8.693
+   s=   5.8073  log(1/mu)=   43.491  ratio= 0.759  slope=  8.769
+   s=   6.1900  log(1/mu)=   46.859  ratio= 0.767  slope=  8.798
+   s=   6.5744  log(1/mu)=   50.221  ratio= 0.774  slope=  8.748
+   s=   6.9653  log(1/mu)=   53.635  ratio= 0.780  slope=  8.734
+   s=   7.3571  log(1/mu)=   57.075  ratio= 0.786  slope=  8.780
+   s=   7.7450  log(1/mu)=   60.494  ratio= 0.791  slope=  8.813
+   s=   8.1298  log(1/mu)=   63.879  ratio= 0.796  slope=  8.797
+   s=   8.5149  log(1/mu)=   67.249  ratio= 0.800  slope=  8.753
+   s=   8.9025  log(1/mu)=   70.625  ratio= 0.804  slope=  8.708
+   s=   9.2933  log(1/mu)=   74.013  ratio= 0.807  slope=  8.669
+   s=   9.6870  log(1/mu)=   77.412  ratio= 0.810  slope=  8.637
+   s=  10.0827  log(1/mu)=   80.819  ratio= 0.812  slope=  8.608
+
+alpha=2.0 n=180:  s = ell^(1/alpha),  log(1/mu),  ratio log(1/mu)/(pi^2 s),  local slope d log(1/mu)/ds
+   s=   0.9287  log(1/mu)=    3.442  ratio= 0.375  slope=    nan
+   s=   1.4203  log(1/mu)=    6.691  ratio= 0.477  slope=  6.611
+   s=   1.8527  log(1/mu)=    9.952  ratio= 0.544  slope=  7.540
+   s=   2.2672  log(1/mu)=   13.240  ratio= 0.592  slope=  7.932
+   s=   2.6728  log(1/mu)=   16.551  ratio= 0.627  slope=  8.166
+   s=   3.0727  log(1/mu)=   19.883  ratio= 0.656  slope=  8.330
+   s=   3.4691  log(1/mu)=   23.232  ratio= 0.679  slope=  8.451
+   s=   3.8614  log(1/mu)=   26.585  ratio= 0.698  slope=  8.544
+   s=   4.2512  log(1/mu)=   29.950  ratio= 0.714  slope=  8.634
+   s=   4.6405  log(1/mu)=   33.329  ratio= 0.728  slope=  8.680
+   s=   5.0255  log(1/mu)=   36.699  ratio= 0.740  slope=  8.752
+   s=   5.4125  log(1/mu)=   40.094  ratio= 0.751  slope=  8.772
+   s=   5.7950  log(1/mu)=   43.476  ratio= 0.760  slope=  8.841
+   s=   6.1791  log(1/mu)=   46.866  ratio= 0.768  slope=  8.828
+   s=   6.5628  log(1/mu)=   50.281  ratio= 0.776  slope=  8.898
+   s=   6.9416  log(1/mu)=   53.651  ratio= 0.783  slope=  8.898
+   s=   7.3263  log(1/mu)=   57.069  ratio= 0.789  slope=  8.885
+   s=   7.7085  log(1/mu)=   60.493  ratio= 0.795  slope=  8.957
+   s=   8.0855  log(1/mu)=   63.866  ratio= 0.800  slope=  8.948
+   s=   8.4676  log(1/mu)=   67.268  ratio= 0.805  slope=  8.902
+   s=   8.8532  log(1/mu)=   70.715  ratio= 0.809  slope=  8.939
+   s=   9.2338  log(1/mu)=   74.137  ratio= 0.813  slope=  8.992
+   s=   9.6106  log(1/mu)=   77.516  ratio= 0.817  slope=  8.967
+   s=   9.9906  log(1/mu)=   80.902  ratio= 0.820  slope=  8.911
