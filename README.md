@@ -32,9 +32,9 @@ for `n >= n_0`. It also proves a one-sided uncertainty principle with sharp expo
 | `code/check_toeplitz_alpha.py` | `lambda_min(T_n(xi^alpha))` against `(alpha log(n)/(pi^2 n))^alpha`. |
 | `code/check_trigamma.py` | The trigamma symbol: Fourier coefficients, the reflection identity and the Gram matrix. |
 | `code/fit_constant.py` | Fits of `n lambda_n` and the Legendre cross-check against the leak–moment curve. |
-| `code/check_hegerfeldt.py` | The sharp Hegerfeldt inequality on random initial data, and the extremal family for small `lambda0`. |
+| `code/check_hegerfeldt.py` | The sharp Hegerfeldt inequality on random complex initial data, and the extremal family for small `lambda0`. |
 | `code/check_hegerfeldt_sharpness.py` | The extremal family for large `lambda0`, with the leak computed exactly from the Mellin formula. |
-| `code/check_hegerfeldt_radial.py` | Radial waves in `3+1`: the energies and the moment computed from the three-dimensional Fourier transform against the odd extension in `1+1`. |
+| `code/check_hegerfeldt_radial.py` | Radial waves in `3+1`: the energies and the moment computed from the three-dimensional Fourier transform against the odd extension in `1+1`, on random complex data and on data dominated by positive frequencies. |
 | `code/verify_all.py` | Recomputes every numerical value quoted in the article and reports discrepancies. |
 | `results/` | The outputs of the scripts above, as produced on the machine described in the article. |
 

@@ -1,6 +1,8 @@
 """Numerical check of the sharp Hegerfeldt theorem (Subsection 7.2, Theorem 7.6 and Proposition 7.7).
 
-(a) inequality E_- >= C0 E exp(-pi r omega_bar) on random smooth data in B_r;
+(a) inequality E_- >= C0 E exp(-pi r omega_bar) on random smooth COMPLEX data in B_r, built as a
+    right-moving positive-frequency wave plus a random perturbation of size 10^(-4)..1
+    (for real data E_- = E/2 identically and the check would be empty);
 (b) the extremal family of the sharpness proposition, u = q - q(.-h), q = transported Gaussian packet,
     for small lambda0 only: in double precision E_- cannot be resolved below about 1e-18, so the
     large-lambda0 behaviour (ratio log(E/E_-)/(pi r omega_bar) -> 1) is checked in
@@ -31,16 +33,19 @@ rng = np.random.default_rng(1)
 r = 1.0
 x = np.linspace(-4, 4, 2**16, endpoint=False)
 worst = np.inf
+minEm = np.inf
 for trial in range(200):
-    kk = rng.uniform(0, 40)
-    ph0 = bump(x, -r, r)*(np.cos(kk*x)+rng.normal()*np.sin(rng.uniform(0, 40)*x))
-    ph1 = bump(x, -0.7, 0.9)*rng.normal(size=1)*np.cos(rng.uniform(0, 40)*x+rng.uniform(0, 6))
+    kk = rng.uniform(1, 40)
+    ph0 = bump(x, -r, r)*np.exp(1j*kk*x)*(1+rng.normal()*np.cos(rng.uniform(0, 20)*x))
     ph0p = np.gradient(ph0, x)
+    eps = 10.0**rng.uniform(-4, 0)
+    ph1 = -ph0p + eps*bump(x, -0.7, 0.9)*(rng.normal()+1j*rng.normal())*np.exp(1j*rng.uniform(-40, 40)*x)
     u = 0.5*(ph1-ph0p); v = 0.5*(ph1+ph0p)
-    Em, E, Mp = energies(u.astype(complex), v.astype(complex), x)
+    Em, E, Mp = energies(u, v, x)
+    minEm = min(minEm, Em/E)
     ratio = Em/(C0*E*np.exp(-np.pi*r*Mp/E))
     worst = min(worst, ratio)
-print(f"C0={C0:.6f}  (a) min ratio E_-/bound over 200 random data = {worst:.3f}")
+print(f"C0={C0:.6f}  (a) 200 random complex data: min E_-/E = {minEm:.2e}, min ratio E_-/bound = {worst:.3f}")
 
 # (b) sharpness family, built in the Mellin variable
 for lam in [2, 4, 8]:

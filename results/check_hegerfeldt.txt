@@ -1,4 +1,4 @@
-C0=0.378473  (a) min ratio E_-/bound over 200 random data = 1510.720
+C0=0.378473  (a) 200 random complex data: min E_-/E = 6.25e-14, min ratio E_-/bound = 510527.736
 (b) lam= 2 supp=[-0.6619,+0.6619]  E_-/E=6.36e-05  log(E/E_-)/(pi r omega_bar)=0.3166  thm holds: True
 (b) lam= 4 supp=[-0.8784,+0.8784]  E_-/E=3.00e-09  log(E/E_-)/(pi r omega_bar)=0.5199  thm holds: True
 (b) lam= 8 supp=[-0.9508,+0.9508]  E_-/E=2.40e-18  log(E/E_-)/(pi r omega_bar)=0.6502  thm holds: True
