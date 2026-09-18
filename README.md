@@ -1,8 +1,8 @@
-# The constant in the Montgomery–Preissmann conjecture: code and data
+# A sharp one-sided uncertainty principle and the truncated discrete Hilbert transform: code and data
 
 Python code and computed results accompanying the article
 
-> F. Bustillos, *The constant in the Montgomery–Preissmann conjecture: a sharp one-sided uncertainty principle and Toeplitz matrices with a zero at a jump*.
+> F. Bustillos, *A sharp one-sided uncertainty principle and a conjecture of Montgomery and Preissmann on the truncated discrete Hilbert transform*.
 
 Let `H_n` be the `n × n` matrix with entries `1/(j-k)` off the diagonal. The article proves that
 
@@ -10,13 +10,13 @@ Let `H_n` be the `n × n` matrix with entries `1/(j-k)` off the diagonal. The ar
 pi - ||H_n||  ~  (2/pi) log(n)/n ,
 ```
 
-which settles the conjecture of Montgomery and Preissmann and identifies its constant, with the explicit bounds
+which proves a conjecture of Montgomery and Preissmann and identifies its constant, with the explicit bounds
 
 ```
 (2/pi) (log(n) - log(log(n)))/n  <=  pi - ||H_n||  <=  (2/pi) log(n)/n + sqrt(2 log(n))/n + 30/(pi n)
 ```
 
-for `n >= n_0`. It also proves a one-sided uncertainty principle with sharp exponent `pi^2`, with consequences for Toeplitz matrices whose symbol vanishes on one side of a jump and a sharp quantitative form of the Hegerfeldt theorem for the wave equation in `1+1` dimensions.
+for `n >= n_0`. It also proves a one-sided uncertainty principle with sharp exponent `pi^2`, with consequences for Toeplitz matrices whose symbol vanishes on one side of a jump and a sharp quantitative form of the Hegerfeldt theorem for the wave equation in `1+1` dimensions and for radial waves in `3+1`.
 
 ## Contents
 
@@ -34,6 +34,7 @@ for `n >= n_0`. It also proves a one-sided uncertainty principle with sharp expo
 | `code/fit_constant.py` | Fits of `n lambda_n` and the Legendre cross-check against the leak–moment curve. |
 | `code/check_hegerfeldt.py` | The sharp Hegerfeldt inequality on random initial data, and the extremal family for small `lambda0`. |
 | `code/check_hegerfeldt_sharpness.py` | The extremal family for large `lambda0`, with the leak computed exactly from the Mellin formula. |
+| `code/check_hegerfeldt_radial.py` | Radial waves in `3+1`: the energies and the moment computed from the three-dimensional Fourier transform against the odd extension in `1+1`. |
 | `code/verify_all.py` | Recomputes every numerical value quoted in the article and reports discrepancies. |
 | `results/` | The outputs of the scripts above, as produced on the machine described in the article. |
 
