@@ -6,6 +6,7 @@ authors:
   - family-names: Bustillos
     given-names: Francisco
     affiliation: "Universidad Catolica del Maule, Talca, Chile"
+    orcid: "https://orcid.org/0009-0001-7251-310X"
     email: fbustillos@ucm.cl
 license: MIT
 repository-code: "https://github.com/bustillosmorales-lgtm/montgomery-preissmann-constant"
