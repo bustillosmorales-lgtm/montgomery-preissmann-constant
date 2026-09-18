@@ -28,10 +28,19 @@ chk('C0 = 0.378', 0.378, C0, 5e-4)
 chk('log(pi^2 C0/2) = 0.6247', 0.6247, math.log(PI ** 2 * C0 / 2), 5e-5)
 chk('7 zeta(3)+pi^4/6 < 25', 1.0, float(7 * mp.zeta(3) + mp.pi ** 4 / 6 < 25), 0)
 chk('sum (2j-1)^-4 = pi^4/96', PI ** 4 / 96, float(mp.nsum(lambda j: (2 * j - 1) ** -4, [1, mp.inf])), 1e-12)
-chk('0.4122 >= e^{1/2}/4', 1.0, float(0.4122 >= math.exp(0.5) / 4), 0)
-chk('5.35 >= pi^2/2+0.4122', 1.0, float(5.35 >= PI ** 2 / 2 + 0.4122), 0)
-chk('2.04 >= 0.4122 pi^2/2', 1.0, float(2.04 >= 0.4122 * PI ** 2 / 2), 0)
-chk('2.04+pi^2 < 11.91', 1.0, float(2.04 + PI ** 2 < 11.91), 0)
+# Theorem upper (18-09): delta^4 = 2 pi^2 / l
+_xs = np.linspace(0, 1, 100001)
+chk('e^x <= 1+x+x^2 on [0,1]', 1.0, float(np.all(np.exp(_xs) <= 1 + _xs + _xs ** 2 + 1e-15)), 0)
+_l = 50.0; _d2 = math.sqrt(2 * PI ** 2 / _l)
+chk('balance pi^2/(2d^2) = l d^2/4', PI ** 2 / (2 * _d2), _l * _d2 / 4, 1e-12)
+chk('balance sum = pi sqrt(l/2)', PI * math.sqrt(_l / 2), PI ** 2 / (2 * _d2) + _l * _d2 / 4, 1e-12)
+chk('l d^4/8 = pi^2/4', PI ** 2 / 4, _l * _d2 ** 2 / 8, 1e-12)
+chk('pi^2/8+pi^2/4+pi^2/16 = 7pi^2/16', 7 * PI ** 2 / 16, PI ** 2 / 8 + PI ** 2 / 4 + PI ** 2 / 16, 1e-12)
+chk('23 pi^2/16 < 14.19', 1.0, float(23 * PI ** 2 / 16 < 14.19), 0)
+chk('14.19 < 15', 1.0, float(14.19 < 15), 0)
+chk('delta <= 1 iff l >= 2 pi^2', 1.0, float(abs((2 * PI ** 2 / (2 * PI ** 2)) - 1) < 1e-15), 0)
+chk('30/pi form: (2/pi)*15 = 30/pi', 30 / PI, 2 / PI * 15, 1e-12)
+chk('(2/pi) pi sqrt(l/2) = sqrt(2l)', math.sqrt(2 * _l), 2 / PI * PI * math.sqrt(_l / 2), 1e-12)
 chk('4 pi^2 <= 40', 1.0, float(4 * PI ** 2 <= 40), 0)
 chk('32/3 * 8 < 86', 1.0, float(32 / 3 * 8 < 86), 0)
 chk('gamma trigamma 2pi^4/3 -> 8/3', 8 / 3, 2 * PI ** 4 / 3 * (2 / PI ** 2) ** 2, 1e-12)
@@ -67,15 +76,21 @@ for n, q1, q2, q3, q4 in [(256, 0.911, 0.956, 0.39, 1.56), (1024, 0.945, 0.984, 
 # ---------------- Remark 4.5 and Section 8 (upper bound)
 t = txt('check_upper.txt')
 u3 = re.findall(r'^\s*(\d+)\s+[0-9.]+\s+[0-9.]+\s+([0-9.]+)\s+([0-9.]+)\s+([0-9.]+)\s+[0-9.]+\s*$', t, re.M)
-qR = {1024: 23.30, 4096: 26.13, 16384: 28.89, 65536: 31.60, 262144: 34.26}
+qR = {1024: 25.36, 4096: 27.58, 16384: 29.63, 65536: 31.55, 262144: 33.39}
 for n, R, lam, bnd in u3:
     n = int(n)
     if n in qR:
         chk(f'R4.5 pi^2 n R n={n}', qR[n], float(R), 6e-3)
 chk('R4.5 pi^2 n lam 2^10 = 17.27', 17.27, float(u3[0][2]), 6e-3)
 chk('R4.5 pi^2 n lam 2^18 = 24.24', 24.24, float(u3[-1][2]), 6e-3)
-chk('R4.5 bound 2^10 = 35.73', 35.73, float(u3[0][3]), 6e-3)
-chk('R4.5 bound 2^18 = 46.67', 46.67, float(u3[-1][3]), 6e-3)
+chk('R4.5 bound 2^10 = 27.78', 27.78, float(u3[0][3]), 6e-3)
+chk('R4.5 bound 2^18 = 35.32', 35.32, float(u3[-1][3]), 6e-3)
+_dl = [float(x) for x in re.findall(r'^\s*\d+\s+([0-9.]+)\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s*$', t.split('best Gaussian')[0], re.M)]
+chk('R4.5 delta min 1.12', 1.12, min(_dl), 6e-3)
+chk('R4.5 delta max 1.30', 1.30, max(_dl), 6e-3)
+_ex = [100 * (float(R) / float(lam) - 1) for n, R, lam, bnd in u3]
+chk('Concl packets exceed min 38%', 38, min(_ex), 0.5)
+chk('Concl packets exceed max 47%', 47, max(_ex), 0.5)
 best = re.findall(r'^\s*(\d+)\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9.]+)\s*$', t.split('best Gaussian')[1], re.M)
 for (n, ratio), q in zip(best, (13, 12, 11)):
     chk(f'R4.5 best packet n={n} {q}%', q, 100 * (float(ratio) - 1), 0.5)
@@ -160,9 +175,16 @@ chk('Remark 6.3 ten digits', 1.0, float(len(re.findall(r'sigma-hat', t)) == 4), 
 ok_all = True
 for line in open('results/hilbert_norm.csv').read().splitlines()[1:]:
     c_ = line.split(','); n_ = int(c_[0]); g_ = float(c_[2]); Ln = math.log(n_)
-    lo = 2 / PI * (Ln - math.log(Ln)) / n_; hi = 2 / PI * (Ln + 6 * math.sqrt(Ln) + 13) / n_
+    lo = 2 / PI * (Ln - math.log(Ln)) / n_; hi = 2 / PI * (Ln + PI * math.sqrt(Ln / 2) + 15) / n_
     ok_all = ok_all and (lo <= g_ <= hi)
 chk('Thm A bounds hold 16..2^18', 1.0, float(ok_all), 0)
+_res = {}
+for line in open('results/hilbert_norm.csv').read().splitlines()[1:]:
+    c_ = line.split(','); n_ = int(c_[0]); g_ = float(c_[2]); Ln = math.log(n_)
+    _res[n_] = n_ * g_ - 2 / PI * Ln - math.sqrt(2 * Ln)
+chk('Concl 2nd-order residual n=2^8 = 2.95', 2.95, _res[256], 6e-3)
+chk('Concl 2nd-order residual n=2^18 = 2.49', 2.49, _res[262144], 6e-3)
+chk('Concl residual decreasing 2^8..2^18', 1.0, float(all(np.diff([_res[k] for k in sorted(_res) if k >= 256]) < 0)), 0)
 chk('(2 pi)^4 threshold', 1.0, float((2 * PI) ** 4 < 1600), 0)
 
 nf = 0

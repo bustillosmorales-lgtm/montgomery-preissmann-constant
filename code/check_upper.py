@@ -6,8 +6,8 @@ Claims checked:
   (U1) exact first moment  int t |F|^2 = (l0/pi)(1 + e^{delta^2/2})          [local model, FFT]
   (U2) leak  mu <= exp(-2 pi l0 + pi^2/(2 delta^2))                          [local model, FFT]
   (U3) Rayleigh quotient of T_n(xi) at u  <=  (D + n mu)/n (1 + small)        [discrete, exact matvec]
-  (U4) with delta^2 = (log n)^{-1/2}, 2 pi l0 = log n + pi^2/(2 delta^2):
-       pi^2 n lambda_n <= pi^2 n R(u) <= log n + 6 sqrt(log n) + 13  (the theorem's bound, C = 13 here)
+  (U4) with delta^4 = 2 pi^2 / log n, 2 pi l0 = log n + pi^2/(2 delta^2):
+       pi^2 n lambda_n <= pi^2 n R(u) <= log n + pi sqrt(log n / 2) + 15  (the theorem's bound)
 and, for comparison, the best Gaussian packet (optimised l0, delta) against lambda_n.
 """
 import sys
@@ -69,16 +69,16 @@ for l0, d in [(2.0, 1.0), (3.0, 0.7), (4.0, 0.6), (4.76, 0.53)]:
     print(f"{l0:6.2f} {d:6.2f} {M1:12.7f} {l0/PI*(1+np.exp(d*d/2)):21.7f} {D:10.7f} {mu:11.3e} {np.exp(-2*PI*l0+PI**2/(2*d*d)):11.3e}")
 
 print("\n(U3)-(U4) discrete, parameters of the theorem")
-print(f"{'n':>7} {'delta':>6} {'l0':>6} {'pi^2 n R(u)':>12} {'pi^2 n lam_n':>13} {'log n+6sqrt(log n)+13':>22} {'||u||^2':>9}")
+print(f"{'n':>7} {'delta':>6} {'l0':>6} {'pi^2 n R(u)':>12} {'pi^2 n lam_n':>13} {'log n+pi sqrt(log n/2)+15':>26} {'||u||^2':>9}")
 for e in (10, 12, 14, 16, 18):
     n = 2 ** e
     L = np.log(n)
-    d = L ** -0.25
+    d = (2 * PI ** 2 / L) ** 0.25
     l0 = (L + PI ** 2 / (2 * d * d)) / (2 * PI)
     R, nu = rayleigh(n, l0, d)
     lam = LAM[n]
-    print(f"{n:7d} {d:6.3f} {l0:6.3f} {PI**2*n*R:12.4f} {PI**2*n*lam:13.4f} {L+6*np.sqrt(L)+13:22.4f} {nu:9.6f}")
-    assert R >= lam - 1e-12 and PI ** 2 * n * R <= L + 6 * np.sqrt(L) + 13
+    print(f"{n:7d} {d:6.3f} {l0:6.3f} {PI**2*n*R:12.4f} {PI**2*n*lam:13.4f} {L+PI*np.sqrt(L/2)+15:26.4f} {nu:9.6f}")
+    assert R >= lam - 1e-12 and PI ** 2 * n * R <= L + PI * np.sqrt(L / 2) + 15
 
 print("\nbest Gaussian packet (optimised l0, delta) vs lambda_n")
 print(f"{'n':>7} {'l0*':>7} {'delta*':>7} {'n R_best':>9} {'n lam_n':>9} {'ratio':>7}")
